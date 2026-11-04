@@ -1,0 +1,107 @@
+# ==========================================
+# ENVIRONMENT VARIABLES AND SECRETS
+# ==========================================
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# ==========================================
+# DEPENDENCIES
+# ==========================================
+node_modules/
+**/node_modules/
+
+# ==========================================
+# BUILD OUTPUTS
+# ==========================================
+.next/
+**/.next/
+dist/
+**/dist/
+build/
+**/build/
+out/
+**/out/
+coverage/
+**/coverage/
+
+# ==========================================
+# LOGS
+# ==========================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ==========================================
+# GENERATED FILES
+# ==========================================
+*.tsbuildinfo
+**/next-env.d.ts
+
+# ==========================================
+# TEMPORARY BACKUPS
+# ==========================================
+*.bak
+*.backup
+*.tmp
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# EDITOR CONFIGURATION
+# ==========================================
+.idea/
+.vscode/
+
+# ==========================================
+# PYTHON ARTIFACTS (FOR FUTURE TASKS)
+# ==========================================
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+# ==========================================
+# LOCAL AI DEVELOPMENT CONFIGURATION
+# ==========================================
+**/.agents/
+**/.claude/
+**/.cursor/
+**/.devin/
+
+# ==========================================
+# DEVELOPMENT BACKUPS AND REPORTS
+# ==========================================
+**/*.before-client-import-fix.bak
+**/*backup*.json
+**/*-backup-*.json
+**/*backup*.ts
+
+# ==========================================
+# TEMPORARY IMAGE REVIEW MATERIAL
+# ==========================================
+**/image-review/
+**/*image-review*.csv
+**/*image-review*.html
+**/*image-audit*.csv
+**/*image-audit*.json
+**/*image-types*.csv
+**/*image-types*.json
+**/*image-report*.json
+# Additional development reports
+**/demo-product-cleanup-audit*.json
+**/demo-product-image-url-before-update-*.json
+**/unsplash-image-cache-audit.csv
+**/repeated-demo-image-report.json
+**/fashion-image-review.csv
+
+# Local coding-agent instruction files
+**/AGENTS.md

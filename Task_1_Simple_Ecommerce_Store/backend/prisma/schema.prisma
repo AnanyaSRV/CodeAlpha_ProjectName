@@ -1,0 +1,153 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  CUSTOMER
+  VENDOR
+  DELIVERY
+  ADMIN
+}
+
+enum VendorApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum VendorFulfillmentStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  role      UserRole @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  vendorProfile Vendor?
+  orders        Order[]
+
+  deliveryOrders Order[] @relation("DeliveryPartnerOrders")
+}
+
+model Vendor {
+  id                String                  @id @default(cuid())
+  storeName         String
+  description       String?
+  commission        Float                   @default(10)
+  applicationStatus VendorApplicationStatus @default(APPROVED)
+  rejectionReason   String?
+  reviewedAt        DateTime?
+  userId            String                  @unique
+  createdAt         DateTime                @default(now())
+
+  user     User      @relation(fields: [userId], references: [id])
+  products Product[]
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  category    String   @default("Uncategorized")
+  price       Float
+  stock       Int      @default(0)
+  imageUrl    String?
+  active      Boolean  @default(true)
+  vendorId    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  vendor     Vendor      @relation(fields: [vendorId], references: [id])
+  orderItems OrderItem[]
+}
+
+model Order {
+  id            String        @id @default(cuid())
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+  total         Float
+  customerId    String
+
+  razorpayOrderId   String?   @unique
+  razorpayPaymentId String?   @unique
+  paidAt            DateTime?
+  paymentExpiresAt  DateTime?
+
+  shippingName  String
+  shippingPhone String
+  addressLine1  String
+  addressLine2  String?
+  city          String
+  state         String
+  postalCode    String
+  contactEmail  String?
+
+  deliveryPartnerId String?
+  deliveryAssignedAt DateTime?
+  pickedUpAt         DateTime?
+  deliveredAt        DateTime?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  customer User @relation(fields: [customerId], references: [id])
+
+   deliveryPartner User? @relation("DeliveryPartnerOrders", fields: [deliveryPartnerId], references: [id])
+
+  items OrderItem[]
+
+  @@index([deliveryPartnerId, status])
+}
+
+model OrderItem {
+  id             String @id @default(cuid())
+  quantity       Int
+  unitPrice      Float
+  commissionRate Float  @default(10)
+  orderId        String
+  productId      String
+
+  fulfillmentStatus VendorFulfillmentStatus @default(PENDING)
+
+  order   Order   @relation(fields: [orderId], references: [id])
+  product Product @relation(fields: [productId], references: [id])
+}
+
+model RazorpayWebhookEvent {
+  id          String   @id @default(cuid())
+  eventId     String   @unique
+  eventType   String
+  processedAt DateTime @default(now())
+}

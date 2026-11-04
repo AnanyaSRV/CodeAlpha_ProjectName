@@ -1,0 +1,564 @@
+{
+  "generatedAt": "2026-10-29T13:16:09.624Z",
+  "note": "Plan only. These destination files must exist before applying changes.",
+  "changes": [
+    {
+      "id": "cmvt6d1r70001cchu510asqfz",
+      "name": "[MH-DEMO-0002] Canvas Tote Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1574365569389-a10d488ca3fb?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/canvas-tote-bag.png"
+    },
+    {
+      "id": "cmvt6d1r70002cchudq9eynzs",
+      "name": "[MH-DEMO-0003] Hardcover Notebook",
+      "oldImageUrl": "https://images.unsplash.com/photo-1647559709298-c0e3dcb47092?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/hardcover-notebook.png"
+    },
+    {
+      "id": "cmvt6d1r70003cchuarzlgn0o",
+      "name": "[MH-DEMO-0004] Decorative Table Lamp",
+      "oldImageUrl": "https://images.unsplash.com/photo-1771363340681-6d059f408235?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/home/decorative-table-lamp.png"
+    },
+    {
+      "id": "cmvt6d1r70004cchuy3u69elo",
+      "name": "[MH-DEMO-0005] USB-C Charging Cable",
+      "oldImageUrl": "https://images.unsplash.com/photo-1572721546624-05bf65ad7679?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/usb-c-charging-cable.png"
+    },
+    {
+      "id": "cmvt6d1r70005cchu53vpstqu",
+      "name": "[MH-DEMO-0006] Yoga Mat",
+      "oldImageUrl": "https://images.unsplash.com/photo-1599447292180-45fd84092ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/yoga-mat.png"
+    },
+    {
+      "id": "cmvt6d1r80006cchulpyp0uls",
+      "name": "[MH-DEMO-0007] Makeup Organizer",
+      "oldImageUrl": "https://images.unsplash.com/photo-1608979048467-6194dabc6a3d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/makeup-organizer.png"
+    },
+    {
+      "id": "cmvt6d1r80007cchu2dumwbkv",
+      "name": "[MH-DEMO-0008] Ceramic Coffee Mug",
+      "oldImageUrl": "https://images.unsplash.com/photo-1605714196241-00bf7a8fe7bb?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/kitchen/ceramic-coffee-mug.png"
+    },
+    {
+      "id": "cmvt6d1r80008cchuagchc6vo",
+      "name": "[MH-DEMO-0009] Compact Travel Umbrella",
+      "oldImageUrl": "https://images.unsplash.com/photo-1776127850796-6f3eb4e00637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8Q29tcGFjdCUyMFRyYXZlbCUyMFVtYnJlbGxhJTIwT3V0ZG9vciUyMGFuZCUyMFRyYXZlbCUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNTcyODh8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/travel/compact-travel-umbrella.png"
+    },
+    {
+      "id": "cmvt6d1r80009cchuchxeopzw",
+      "name": "[MH-DEMO-0010] Gift Box Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/gift-box-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000bcchu26vpc3t0",
+      "name": "[MH-DEMO-0012] Everyday Backpack",
+      "oldImageUrl": "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/everyday-backpack.png"
+    },
+    {
+      "id": "cmvt6d1r8000ccchut30xr8ey",
+      "name": "[MH-DEMO-0013] Daily Planner",
+      "oldImageUrl": "https://images.unsplash.com/photo-1531346852511-e39bf96dc721?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/daily-planner.png"
+    },
+    {
+      "id": "cmvt6d1r8000dcchufoxw8o2p",
+      "name": "[MH-DEMO-0014] Ceramic Flower Vase",
+      "oldImageUrl": "https://images.unsplash.com/photo-1588874133473-d6d9c9dd4f31?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/home/ceramic-flower-vase.png"
+    },
+    {
+      "id": "cmvt6d1r8000ecchuzes0u7wa",
+      "name": "[MH-DEMO-0015] Wireless Mouse",
+      "oldImageUrl": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/wireless-mouse.png"
+    },
+    {
+      "id": "cmvt6d1r8000fcchu2z24z11e",
+      "name": "[MH-DEMO-0016] Resistance Band Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1584827386916-b5351d3ba34b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8UmVzaXN0YW5jZSUyMEJhbmQlMjBTZXQlMjBGaXRuZXNzJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzI5M3ww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/fitness/resistance-band-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000gcchu249j61yu",
+      "name": "[MH-DEMO-0017] Cosmetic Travel Pouch",
+      "oldImageUrl": "https://images.unsplash.com/photo-1538022890810-8f4000ca9a10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8Q29zbWV0aWMlMjBUcmF2ZWwlMjBQb3VjaCUyMEJlYXV0eSUyMEFjY2Vzc29yaWVzJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzI5NHww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/beauty/cosmetic-travel-pouch.png"
+    },
+    {
+      "id": "cmvt6d1r8000hcchuxfw5223a",
+      "name": "[MH-DEMO-0018] Reusable Lunch Box",
+      "oldImageUrl": "https://images.unsplash.com/photo-1647766888652-6d7214024c31?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8UmV1c2FibGUlMjBMdW5jaCUyMEJveCUyMEtpdGNoZW4lMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3Mjk1fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/kitchen/reusable-lunch-box.png"
+    },
+    {
+      "id": "cmvt6d1r8000icchugf4638lk",
+      "name": "[MH-DEMO-0019] Packing Cube Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/packing-cube-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000jcchutsgkq8qi",
+      "name": "[MH-DEMO-0020] Scented Candle Jar",
+      "oldImageUrl": "https://images.unsplash.com/photo-1572726729207-a78d6feb18d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8U2NlbnRlZCUyMENhbmRsZSUyMEphciUyMEdpZnRzJTIwYW5kJTIwTGlmZXN0eWxlJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzI5Nnww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/gifts/scented-candle-jar.png"
+    },
+    {
+      "id": "cmvt6d1r8000lcchur0jy68rj",
+      "name": "[MH-DEMO-0022] Laptop Messenger Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1597318528857-7bc70b970f7a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8TGFwdG9wJTIwTWVzc2VuZ2VyJTIwQmFnJTIwQmFncyUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNTcyOTd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/bags/laptop-messenger-bag.png"
+    },
+    {
+      "id": "cmvt6d1r8000mcchuprm0c42n",
+      "name": "[MH-DEMO-0023] Sketchbook",
+      "oldImageUrl": "https://images.unsplash.com/photo-1603188389888-7b80bd0a7e3e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8U2tldGNoYm9vayUyMFN0YXRpb25lcnklMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3Mjk4fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/stationery/sketchbook.png"
+    },
+    {
+      "id": "cmvt6d1r8000ncchuja06nrco",
+      "name": "[MH-DEMO-0024] Cushion Cover Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1575277340591-849c346c4542?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8Q3VzaGlvbiUyMENvdmVyJTIwU2V0JTIwSG9tZSUyMERlY29yJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzI5OXww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/home/cushion-cover-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000occhuil6ppm4v",
+      "name": "[MH-DEMO-0025] Laptop Stand",
+      "oldImageUrl": "https://images.unsplash.com/photo-1623251606108-512c7c4a3507?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8TGFwdG9wJTIwU3RhbmQlMjBFbGVjdHJvbmljcyUyMEFjY2Vzc29yaWVzJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzI5OXww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/electronics/laptop-stand.png"
+    },
+    {
+      "id": "cmvt6d1r8000pcchum5kqtdt4",
+      "name": "[MH-DEMO-0026] Training Water Bottle",
+      "oldImageUrl": "https://images.unsplash.com/photo-1649888254873-d9870ee286ee?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8VHJhaW5pbmclMjBXYXRlciUyMEJvdHRsZSUyMEZpdG5lc3MlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3MzAwfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/fitness/training-water-bottle.png"
+    },
+    {
+      "id": "cmvt6d1r8000qcchuo6uawabp",
+      "name": "[MH-DEMO-0027] Hair Brush",
+      "oldImageUrl": "https://images.unsplash.com/photo-1543163521-1a8ee7a8f0c5?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/hair-brush.png"
+    },
+    {
+      "id": "cmvt6d1r8000rcchu5baz6xju",
+      "name": "[MH-DEMO-0028] Glass Water Bottle",
+      "oldImageUrl": "https://images.unsplash.com/photo-1758798156445-dba395210090?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8R2xhc3MlMjBXYXRlciUyMEJvdHRsZSUyMEtpdGNoZW4lMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3MzAxfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/kitchen/glass-water-bottle.png"
+    },
+    {
+      "id": "cmvt6d1r8000scchucl69uu3u",
+      "name": "[MH-DEMO-0029] Travel Neck Pillow",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/travel-neck-pillow.png"
+    },
+    {
+      "id": "cmvt6d1r8000tcchu4o3t0wgh",
+      "name": "[MH-DEMO-0030] Greeting Card Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1536708240345-09b88a880069?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8R3JlZXRpbmclMjBDYXJkJTIwU2V0JTIwR2lmdHMlMjBhbmQlMjBMaWZlc3R5bGUlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3MzAzfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/gifts/greeting-card-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000vcchul1zom5g2",
+      "name": "[MH-DEMO-0032] Travel Duffel Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1525103504173-8dc1582c7430?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/travel-duffel-bag.png"
+    },
+    {
+      "id": "cmvt6d1r8000wcchubxvcan49",
+      "name": "[MH-DEMO-0033] Gel Pen Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/gel-pen-set.png"
+    },
+    {
+      "id": "cmvt6d1r8000xcchuyuqj3ijt",
+      "name": "[MH-DEMO-0034] Wall Art Print",
+      "oldImageUrl": "https://images.unsplash.com/photo-1676883343810-e3e4b63d8ecd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8V2FsbCUyMEFydCUyMFByaW50JTIwSG9tZSUyMERlY29yJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzMwNXww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/home/wall-art-print.png"
+    },
+    {
+      "id": "cmvt6d1r8000ycchu87f4ockp",
+      "name": "[MH-DEMO-0035] Phone Holder",
+      "oldImageUrl": "https://images.unsplash.com/photo-1604837394598-5b700b11f5e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8UGhvbmUlMjBIb2xkZXIlMjBFbGVjdHJvbmljcyUyMEFjY2Vzc29yaWVzJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzMwNnww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/electronics/phone-holder.png"
+    },
+    {
+      "id": "cmvt6d1r8000zcchu4sb5x9bp",
+      "name": "[MH-DEMO-0036] Workout Gloves",
+      "oldImageUrl": "https://images.unsplash.com/photo-1636124883069-52aef60095f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8V29ya291dCUyMEdsb3ZlcyUyMEZpdG5lc3MlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3MzA3fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/fitness/workout-gloves.png"
+    },
+    {
+      "id": "cmvt6d1r80010cchuq8b578e7",
+      "name": "[MH-DEMO-0037] Makeup Brush Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1679623100266-db82be84f5f3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8TWFrZXVwJTIwQnJ1c2glMjBTZXQlMjBCZWF1dHklMjBBY2Nlc3NvcmllcyUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNTczMDd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/beauty/makeup-brush-set.png"
+    },
+    {
+      "id": "cmvt6d1r80011cchukldjpkv4",
+      "name": "[MH-DEMO-0038] Kitchen Storage Jar Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1686820740642-5a1fcd0300a9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8S2l0Y2hlbiUyMFN0b3JhZ2UlMjBKYXIlMjBTZXQlMjBLaXRjaGVuJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI1NzMwOHww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/kitchen/food-storage-container.png"
+    },
+    {
+      "id": "cmvt6d1r90012cchulfk5zy6d",
+      "name": "[MH-DEMO-0039] Reusable Shopping Tote",
+      "oldImageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/reusable-shopping-tote.png"
+    },
+    {
+      "id": "cmvt6d1r90013cchuiafob2pq",
+      "name": "[MH-DEMO-0040] Decorative Keychain",
+      "oldImageUrl": "https://images.unsplash.com/photo-1678329191708-ba3140c28436?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8RGVjb3JhdGl2ZSUyMEtleWNoYWluJTIwR2lmdHMlMjBhbmQlMjBMaWZlc3R5bGUlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3MzA5fDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/gifts/decorative-gift-set.png"
+    },
+    {
+      "id": "cmvt6d1r90014cchumczwzial",
+      "name": "[MH-DEMO-0041] Summer Dress",
+      "oldImageUrl": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fashion/summer-dress.png"
+    },
+    {
+      "id": "cmvt6d1r90015cchunmtgn00z",
+      "name": "[MH-DEMO-0042] Compact Sling Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/compact-sling-bag.png"
+    },
+    {
+      "id": "cmvt6d1r90016cchuuczwmsxf",
+      "name": "[MH-DEMO-0043] Desk Organizer",
+      "oldImageUrl": "https://images.unsplash.com/photo-1518976224508-8119c10fabad?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8N3x8JTIyRGVzayUyME9yZ2FuaXplciUyMiUyMFN0YXRpb25lcnklMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3NjgxfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/stationery/sticky-notes-set.png"
+    },
+    {
+      "id": "cmvt6d1r90017cchupa1cxljr",
+      "name": "[MH-DEMO-0044] Decorative Planter",
+      "oldImageUrl": "https://images.unsplash.com/photo-1745848038202-a82b6e6ad454?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8OHx8JTIyRGVjb3JhdGl2ZSUyMFBsYW50ZXIlMjIlMjBIb21lJTIwRGVjb3IlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjU3NjgyfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/home/decorative-cushion.png"
+    },
+    {
+      "id": "cmvt6d1r90018cchuhnz2nxr7",
+      "name": "[MH-DEMO-0045] Desk Headphone Stand",
+      "oldImageUrl": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/desk-headphone-stand.png"
+    },
+    {
+      "id": "cmvt6d1r90019cchunrylv7mo",
+      "name": "[MH-DEMO-0046] Jump Rope",
+      "oldImageUrl": "https://images.unsplash.com/photo-1758875569940-b69e9b392005?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MTB8fCUyMkp1bXAlMjBSb3BlJTIyJTIwRml0bmVzcyUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNTc2ODR8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/fitness/fitness-jump-rope.png"
+    },
+    {
+      "id": "cmvt6d1r9001acchu47d1ynw1",
+      "name": "[MH-DEMO-0047] Compact Vanity Mirror",
+      "oldImageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/compact-vanity-mirror.png"
+    },
+    {
+      "id": "cmvt6d1r9001bcchuuskr138l",
+      "name": "[MH-DEMO-0048] Insulated Travel Mug",
+      "oldImageUrl": "https://images.unsplash.com/photo-1543163521-1a8ee7a8f0c5?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/kitchen/insulated-travel-mug.png"
+    },
+    {
+      "id": "cmvt6d1r9001ccchupwxhrhty",
+      "name": "[MH-DEMO-0049] Travel Toiletry Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1764909262009-3dcd5691185c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIyVHJhdmVsJTIwVG9pbGV0cnklMjBCYWclMjIlMjBPdXRkb29yJTIwYW5kJTIwVHJhdmVsJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI2Njg4OHww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/travel/travel-organizer.png"
+    },
+    {
+      "id": "cmvt6d1r9001dcchub21qpvgv",
+      "name": "[MH-DEMO-0050] Photo Album",
+      "oldImageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/photo-album.png"
+    },
+    {
+      "id": "cmvt6d1r9001fcchud5792wmj",
+      "name": "[MH-DEMO-0052] Crossbody Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/crossbody-bag.png"
+    },
+    {
+      "id": "cmvt6d1r9001gcchunrig1r65",
+      "name": "[MH-DEMO-0053] Sticky Note Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1544830281-1d5169d6b2af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8Mnx8JTIyU3RpY2t5JTIwTm90ZSUyMFNldCUyMiUyMFN0YXRpb25lcnklMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjY2ODkxfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/stationery/marker-set.png"
+    },
+    {
+      "id": "cmvt6d1r9001hcchu3u2q7hc2",
+      "name": "[MH-DEMO-0054] Minimalist Wall Clock",
+      "oldImageUrl": "https://images.unsplash.com/photo-1763690792438-692bee47f684?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIyTWluaW1hbGlzdCUyMFdhbGwlMjBDbG9jayUyMiUyMEhvbWUlMjBEZWNvciUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNjY4OTN8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/home/ceramic-planter.png"
+    },
+    {
+      "id": "cmvt6d1r9001icchu902ajoua",
+      "name": "[MH-DEMO-0055] Cable Organizer Kit",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/cable-organizer-kit.png"
+    },
+    {
+      "id": "cmvt6d1r9001jcchuvpjnb0ha",
+      "name": "[MH-DEMO-0056] Gym Duffel Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/gym-duffel-bag.png"
+    },
+    {
+      "id": "cmvt6d1r9001kcchubhcce8lt",
+      "name": "[MH-DEMO-0057] Hair Clip Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1774301844178-c9ce96b76d92?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIySGFpciUyMENsaXAlMjBTZXQlMjIlMjBCZWF1dHklMjBBY2Nlc3NvcmllcyUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNTc2Nzh8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/beauty/skincare-organizer.png"
+    },
+    {
+      "id": "cmvt6d1r9001lcchu0lr4omj3",
+      "name": "[MH-DEMO-0058] Cotton Kitchen Towel Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1643150899069-a748f9216f99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8NHx8JTIyQ290dG9uJTIwS2l0Y2hlbiUyMFRvd2VsJTIwU2V0JTIyJTIwS2l0Y2hlbiUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNjY4OTV8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/kitchen/measuring-spoon-set.png"
+    },
+    {
+      "id": "cmvt6d1r9001mcchuj0c4asn0",
+      "name": "[MH-DEMO-0059] Outdoor Picnic Mat",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/outdoor-picnic-mat.png"
+    },
+    {
+      "id": "cmvt6d1r9001ncchu65akv4s7",
+      "name": "[MH-DEMO-0060] Reusable Gift Wrap",
+      "oldImageUrl": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/reusable-gift-wrap.png"
+    },
+    {
+      "id": "cmvt6d1r9001occhuevl50jrq",
+      "name": "[MH-DEMO-0061] Lightweight Jacket",
+      "oldImageUrl": "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fashion/lightweight-jacket.png"
+    },
+    {
+      "id": "cmvt6d1r9001pcchu1gpddclh",
+      "name": "[MH-DEMO-0062] Weekend Travel Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1543163521-1a8ee7a8f0c5?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/weekend-travel-bag.png"
+    },
+    {
+      "id": "cmvt6d1r9001qcchu92lwnnug",
+      "name": "[MH-DEMO-0063] Journal and Pen Kit",
+      "oldImageUrl": "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/journal-and-pen-kit.png"
+    },
+    {
+      "id": "cmvt6d1r9001rcchua26r2zq7",
+      "name": "[MH-DEMO-0064] Soft Throw Blanket",
+      "oldImageUrl": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/home/soft-throw-blanket.png"
+    },
+    {
+      "id": "cmvt6d1r9001scchuvjgou3tg",
+      "name": "[MH-DEMO-0065] Protective Phone Case",
+      "oldImageUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/protective-phone-case.png"
+    },
+    {
+      "id": "cmvt6d1r9001tcchu3ju8mbsg",
+      "name": "[MH-DEMO-0066] Exercise Towel",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/exercise-towel.png"
+    },
+    {
+      "id": "cmvt6d1r9001ucchuxmz9p988",
+      "name": "[MH-DEMO-0067] Reusable Makeup Pads",
+      "oldImageUrl": "https://images.unsplash.com/photo-1588959571205-4f53699d31d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8NHx8JTIyUmV1c2FibGUlMjBNYWtldXAlMjBQYWRzJTIyJTIwQmVhdXR5JTIwQWNjZXNzb3JpZXMlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjY2OTAyfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/beauty/beauty-accessory-kit.png"
+    },
+    {
+      "id": "cmvt6d1r9001vcchutpv5het7",
+      "name": "[MH-DEMO-0068] Serving Tray",
+      "oldImageUrl": "https://images.unsplash.com/photo-1784901393087-988ae280ea4c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8M3x8JTIyU2VydmluZyUyMFRyYXklMjIlMjBLaXRjaGVuJTIwcHJvZHVjdCUyMHBob3RvZ3JhcGh5fGVufDF8fHx8MTc5MzI2NjkwNHww&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/kitchen/kitchen-utensil-set.png"
+    },
+    {
+      "id": "cmvt6d1r9001wcchukgsaf2jv",
+      "name": "[MH-DEMO-0069] Insulated Travel Bottle",
+      "oldImageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/insulated-travel-bottle.png"
+    },
+    {
+      "id": "cmvt6d1r9001xcchup1l3upjc",
+      "name": "[MH-DEMO-0070] Desk Accessory Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/desk-accessory-set.png"
+    },
+    {
+      "id": "cmvt6d1r9001zcchuje3y3gsc",
+      "name": "[MH-DEMO-0072] Minimalist Wallet",
+      "oldImageUrl": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/pencil-case.png"
+    },
+    {
+      "id": "cmvt6d1r90020cchuzd7hpmb9",
+      "name": "[MH-DEMO-0073] Mechanical Pencil Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/mechanical-pencil-set.png"
+    },
+    {
+      "id": "cmvt6d1r90021cchuv7pu0eq0",
+      "name": "[MH-DEMO-0074] Storage Basket",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/home/storage-basket.png"
+    },
+    {
+      "id": "cmvt6d1r90022cchutoq74s0t",
+      "name": "[MH-DEMO-0075] Compact USB Hub",
+      "oldImageUrl": "https://images.unsplash.com/photo-1616578273461-3a99ce422de6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIyQ29tcGFjdCUyMFVTQiUyMEh1YiUyMiUyMEVsZWN0cm9uaWNzJTIwQWNjZXNzb3JpZXMlMjBwcm9kdWN0JTIwcGhvdG9ncmFwaHl8ZW58MXx8fHwxNzkzMjY2OTEwfDA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/electronics/charging-adapter.png"
+    },
+    {
+      "id": "cmvt6d1ra0023cchu47x68y8p",
+      "name": "[MH-DEMO-0076] Foam Roller",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/foam-roller.png"
+    },
+    {
+      "id": "cmvt6d1ra0024cchunsulj4so",
+      "name": "[MH-DEMO-0077] Toiletry Organizer",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/toiletry-organizer.png"
+    },
+    {
+      "id": "cmvt6d1ra0025cchu3nnkdifi",
+      "name": "[MH-DEMO-0078] Spice Storage Rack",
+      "oldImageUrl": "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/kitchen/spice-storage-rack.png"
+    },
+    {
+      "id": "cmvt6d1ra0026cchu99bk64pl",
+      "name": "[MH-DEMO-0079] Foldable Daypack",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/foldable-daypack.png"
+    },
+    {
+      "id": "cmvt6d1ra0027cchuk38g13zo",
+      "name": "[MH-DEMO-0080] Miniature Display Piece",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/miniature-display-piece.png"
+    },
+    {
+      "id": "cmvt6d1ra0029cchukjv4oysu",
+      "name": "[MH-DEMO-0082] Reusable Shopping Bag",
+      "oldImageUrl": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/reusable-shopping-bag.png"
+    },
+    {
+      "id": "cmvt6d1ra002acchub9rtcuzn",
+      "name": "[MH-DEMO-0083] Document Folder",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/document-folder.png"
+    },
+    {
+      "id": "cmvt6d1ra002bcchud4x420do",
+      "name": "[MH-DEMO-0084] Photo Frame",
+      "oldImageUrl": "https://images.unsplash.com/photo-1560132103-ff44e9dc1f1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIyUGhvdG8lMjBGcmFtZSUyMiUyMEhvbWUlMjBEZWNvciUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNjY5MTd8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/home/decorative-wall-shelf.png"
+    },
+    {
+      "id": "cmvt6d1ra002ccchut1pegal1",
+      "name": "[MH-DEMO-0085] Laptop Sleeve",
+      "oldImageUrl": "https://images.unsplash.com/photo-1689757855413-9e366c2011f1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3wxMTE2ODY0fDB8MXxzZWFyY2h8MXx8JTIyTGFwdG9wJTIwU2xlZXZlJTIyJTIwRWxlY3Ryb25pY3MlMjBBY2Nlc3NvcmllcyUyMHByb2R1Y3QlMjBwaG90b2dyYXBoeXxlbnwxfHx8fDE3OTMyNjY5MTh8MA&ixlib=rb-4.1.0&q=80&w=400",
+      "newImageUrl": "/images/products/electronics/phone-accessory-kit.png"
+    },
+    {
+      "id": "cmvt6d1ra002dcchuh5u1b12t",
+      "name": "[MH-DEMO-0086] Running Belt",
+      "oldImageUrl": "https://images.unsplash.com/photo-1543163521-1a8ee7a8f0c5?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/running-belt.png"
+    },
+    {
+      "id": "cmvt6d1ra002ecchuik3d7rjn",
+      "name": "[MH-DEMO-0087] Headband Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/headband-set.png"
+    },
+    {
+      "id": "cmvt6d1ra002fcchuq4zf4if5",
+      "name": "[MH-DEMO-0088] Reusable Food Container",
+      "oldImageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/kitchen/reusable-food-container.png"
+    },
+    {
+      "id": "cmvt6d1ra002gcchusin3wxi6",
+      "name": "[MH-DEMO-0089] Luggage Tag Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/luggage-tag-set.png"
+    },
+    {
+      "id": "cmvt6d1ra002hcchulgzdd1xn",
+      "name": "[MH-DEMO-0090] Personal Journal",
+      "oldImageUrl": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/personal-journal.png"
+    },
+    {
+      "id": "cmvt6d1ra002icchuyb95q8pl",
+      "name": "[MH-DEMO-0091] Linen Top",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fashion/linen-top.png"
+    },
+    {
+      "id": "cmvt6d1ra002jcchu78gyhmv3",
+      "name": "[MH-DEMO-0092] Organizer Pouch",
+      "oldImageUrl": "https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/bags/organizer-pouch.png"
+    },
+    {
+      "id": "cmvt6d1ra002kcchu9x5bfshy",
+      "name": "[MH-DEMO-0093] Study Flashcards",
+      "oldImageUrl": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/stationery/study-flashcards.png"
+    },
+    {
+      "id": "cmvt6d1ra002lcchudfxka0eq",
+      "name": "[MH-DEMO-0094] Decorative Candle Holder",
+      "oldImageUrl": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/home/decorative-candle-holder.png"
+    },
+    {
+      "id": "cmvt6d1ra002mcchu0ooktz26",
+      "name": "[MH-DEMO-0095] Portable Desk Light",
+      "oldImageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/electronics/portable-desk-light.png"
+    },
+    {
+      "id": "cmvt6d1ra002ncchugflgqlmg",
+      "name": "[MH-DEMO-0096] Stretching Strap",
+      "oldImageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/fitness/stretching-strap.png"
+    },
+    {
+      "id": "cmvt6d1ra002occhu8bm2k15n",
+      "name": "[MH-DEMO-0097] Cosmetic Storage Case",
+      "oldImageUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/beauty/cosmetic-storage-case.png"
+    },
+    {
+      "id": "cmvt6d1ra002pcchuv2fy05ex",
+      "name": "[MH-DEMO-0098] Measuring Cup Set",
+      "oldImageUrl": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/kitchen/measuring-cup-set.png"
+    },
+    {
+      "id": "cmvt6d1ra002qcchuvyepeesj",
+      "name": "[MH-DEMO-0099] Travel Document Wallet",
+      "oldImageUrl": "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/travel/travel-document-wallet.png"
+    },
+    {
+      "id": "cmvt6d1ra002rcchuqpejvwex",
+      "name": "[MH-DEMO-0100] Gift Bag Collection",
+      "oldImageUrl": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85",
+      "newImageUrl": "/images/products/gifts/gift-bag-collection.png"
+    }
+  ]
+}

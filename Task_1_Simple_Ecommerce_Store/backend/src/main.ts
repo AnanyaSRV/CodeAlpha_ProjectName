@@ -1,6 +1,7 @@
 
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import type { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface.js';
 import { AppModule } from './app.module.js';
 
 async function bootstrap() {
@@ -18,9 +19,8 @@ async function bootstrap() {
     ...configuredOrigins,
   ];
 
-  app.enableCors({
-    origin: (origin, callback) => {
-      // Allow requests without an Origin header (health checks, etc.).
+  const corsOptions: CorsOptions = {
+    origin: (origin: string | undefined, callback: (error: Error | null, allow?: boolean) => void) => {
       if (!origin) {
         return callback(null, true);
       }
@@ -40,7 +40,9 @@ async function bootstrap() {
       return callback(new Error('Origin not allowed by CORS'));
     },
     credentials: true,
-  });
+  };
+
+  app.enableCors(corsOptions);
 
   app.useGlobalPipes(
     new ValidationPipe({

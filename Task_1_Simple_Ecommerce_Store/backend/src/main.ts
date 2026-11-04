@@ -8,8 +8,37 @@ async function bootstrap() {
     rawBody: true,
   });
 
+  const configuredOrigins = (process.env.CORS_ORIGINS ?? '')
+    .split(',')
+    .map((origin) => origin.trim().replace(/\/$/, ''))
+    .filter(Boolean);
+
+  const allowedOrigins = [
+    'http://localhost:3000',
+    ...configuredOrigins,
+  ];
+
   app.enableCors({
-    origin: 'http://localhost:3000',
+    origin: (origin, callback) => {
+      // Allow requests without an Origin header (health checks, etc.).
+      if (!origin) {
+        return callback(null, true);
+      }
+
+      const normalizedOrigin = origin.replace(/\/$/, '');
+
+      const isAllowed =
+        allowedOrigins.includes(normalizedOrigin) ||
+        /^https:\/\/[a-zA-Z0-9-]+(?:-[a-zA-Z0-9-]+)*\.vercel\.app$/.test(
+          normalizedOrigin,
+        );
+
+      if (isAllowed) {
+        return callback(null, true);
+      }
+
+      return callback(new Error('Origin not allowed by CORS'));
+    },
     credentials: true,
   });
 

@@ -1,0 +1,100 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discover People — Folio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/discover.css">
+</head>
+
+<body>
+
+    <header class="navbar">
+        <a href="/" class="logo">folio<span>.</span></a>
+
+        <nav class="main-nav">
+            <a href="/" class="nav-link">Home</a>
+            <a href="discover.html" class="nav-link active">Discover</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a href="login.html" class="login-button">Log in</a>
+            <a href="register.html" class="signup-button">Join Folio</a>
+        </div>
+    </header>
+
+
+    <main class="discover-page">
+
+        <section class="discover-hero">
+            <p class="eyebrow">FIND YOUR COMMUNITY</p>
+
+            <h1>
+                Good people.<br>
+                <em>Fresh perspectives.</em>
+            </h1>
+
+            <p>
+                Discover the people behind the ideas.
+                Find someone whose world inspires yours.
+            </p>
+        </section>
+
+
+        <section class="discover-content">
+
+            <div class="discover-heading">
+                <div>
+                    <p class="eyebrow">THE FOLIO COMMUNITY</p>
+                    <h2>Meet your people<span>.</span></h2>
+                </div>
+            </div>
+
+
+            <form id="searchForm" class="search-form">
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search by name or username..."
+                    maxlength="50"
+                    required
+                >
+
+                <button type="submit">Search ↗</button>
+
+            </form>
+
+
+            <div class="search-message" id="searchMessage" role="status">
+                Search for someone to get started.
+            </div>
+
+
+            <div class="people-grid" id="peopleGrid"></div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer">
+        <a href="/" class="logo">folio<span>.</span></a>
+        <p>A little corner of the internet for everything.</p>
+        <span>© 2026 Folio. Made for connection.</span>
+    </footer>
+
+
+    <script src="js/discover.js"></script>
+
+</body>
+</html>

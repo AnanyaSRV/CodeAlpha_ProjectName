@@ -1,0 +1,380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Folio — A social space for curious minds, creative people and fresh perspectives.">
+
+    <title>Folio — Your Creative Community</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/feed.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/dashboard-extras.css">
+</head>
+
+<body class="dashboard-page">
+
+    <header class="dashboard-topbar">
+        <a href="/" class="logo">folio<span>.</span></a>
+
+        <div class="topbar-center">
+            <span class="topbar-edition">THE SOCIAL JOURNAL</span>
+            <span class="topbar-date" id="currentDate"></span>
+        </div>
+
+        <div class="topbar-actions">
+            <a href="discover.html" class="topbar-icon" aria-label="Discover people">⌕</a>
+            <a href="#createPost" class="topbar-create">＋ Create</a>
+        </div>
+    </header>
+
+
+    <main class="dashboard-shell">
+
+        <!-- LEFT SIDEBAR -->
+
+        <aside class="dashboard-sidebar">
+
+            <div class="sidebar-intro">
+                <p class="eyebrow">YOUR SPACE</p>
+                <p class="sidebar-intro-text">
+                    A little corner of the internet for everything.
+                </p>
+            </div>
+
+            <nav class="dashboard-navigation" aria-label="Main navigation">
+
+                <p class="sidebar-label">DISCOVER</p>
+
+                <a href="/" class="dashboard-nav-link active">
+                    <span class="nav-symbol">⌂</span>
+                    <span>Home feed</span>
+                </a>
+
+                <a href="discover.html" class="dashboard-nav-link">
+                    <span class="nav-symbol">⌕</span>
+                    <span>Discover people</span>
+                </a>
+
+                <a href="#feed" class="dashboard-nav-link">
+                    <span class="nav-symbol">✳</span>
+                    <span>Community</span>
+                </a>
+
+                <div class="sidebar-divider"></div>
+
+                <p class="sidebar-label">YOUR ACCOUNT</p>
+
+                <a href="login.html" class="dashboard-nav-link" id="sidebarProfileLink">
+                    <span class="nav-symbol">◎</span>
+                    <span>My Profile</span>
+                </a>
+
+                <a href="saved.html" class="dashboard-nav-link" id="sidebarSavedLink">
+                    <span class="nav-symbol">▣</span>
+                    <span>Saved posts</span>
+                </a>
+
+                <a href="notifications.html" class="dashboard-nav-link" id="sidebarNotificationsLink">
+                    <span class="nav-symbol">♧</span>
+                    <span>Notifications</span>
+                    <span class="notification-badge" id="notificationBadge" hidden>0</span>
+                </a>
+
+                <a href="login.html" class="dashboard-nav-link" id="sidebarLoginLink">
+                    <span class="nav-symbol">↗</span>
+                    <span>Log in</span>
+                </a>
+
+                <button class="dashboard-nav-link logout-nav-link" id="sidebarLogoutButton" hidden>
+                    <span class="nav-symbol">⇥</span>
+                    <span>Log out</span>
+                </button>
+
+            </nav>
+
+            <div class="sidebar-bottom-note">
+                <span class="note-symbol">✳</span>
+                <p>Good things happen when we share what inspires us.</p>
+                <span class="note-signature">THE FOLIO PHILOSOPHY</span>
+            </div>
+
+        </aside>
+
+
+        <!-- CENTRAL CONTENT -->
+
+        <section class="dashboard-main">
+
+            <section class="dashboard-welcome">
+
+                <div>
+                    <p class="eyebrow">A SOCIAL SPACE FOR THE CURIOUS</p>
+
+                    <h1 id="welcomeHeading">
+                        A place for<br>
+                        <em>fresh perspectives.</em>
+                    </h1>
+
+                    <p class="welcome-description">
+                        Discover ideas, share your world and connect
+                        with people who make you think differently.
+                    </p>
+                </div>
+
+                <div class="welcome-index">
+                    <span>VOL. 01</span>
+                    <span>EST. 2026</span>
+                </div>
+
+            </section>
+
+
+            <!-- POST COMPOSER -->
+
+            <section class="create-post-card dashboard-composer" id="createPost">
+
+                <div class="composer-topline">
+                    <p class="eyebrow">YOUR NEXT STORY</p>
+                    <span class="composer-private-label">SHARE WITH THE COMMUNITY</span>
+                </div>
+
+                <div class="composer-heading">
+
+                    <div class="composer-avatar" id="composerAvatar">F</div>
+
+                    <div>
+                        <h3 id="composerTitle">What would you like to share?</h3>
+                        <p id="composerSubtitle">Every interesting thought deserves a place.</p>
+                    </div>
+
+                </div>
+
+                <form id="createPostForm">
+
+                    <textarea
+                        id="postContent"
+                        name="content"
+                        maxlength="2000"
+                        placeholder="Write something worth sharing..."
+                        rows="4"
+                    ></textarea>
+
+                    <div class="image-preview-container" id="imagePreviewContainer" hidden>
+                        <img id="imagePreview" alt="Selected image preview">
+
+                        <button
+                            type="button"
+                            id="removeImageButton"
+                            class="remove-image-button"
+                        >
+                            Remove image
+                        </button>
+                    </div>
+
+                    <div class="composer-footer">
+
+                        <label for="postImage" class="upload-image-button">
+                            <span>＋</span> Add a photograph
+                        </label>
+
+                        <input
+                            type="file"
+                            id="postImage"
+                            name="image"
+                            accept="image/jpeg,image/png,image/webp,image/gif"
+                            hidden
+                        >
+
+                        <button
+                            type="submit"
+                            id="publishButton"
+                            class="publish-button"
+                        >
+                            Publish story <span>↗</span>
+                        </button>
+
+                    </div>
+
+                    <p class="composer-message" id="composerMessage" role="status"></p>
+
+                </form>
+
+                <p class="login-to-post" id="loginToPost" hidden>
+                    <a href="login.html">Log in</a> or
+                    <a href="register.html">join Folio</a>
+                    to share something.
+                </p>
+
+            </section>
+
+
+            <!-- FEED -->
+
+            <section class="dashboard-feed-section" id="feed">
+
+                <div class="feed-heading-row">
+
+                    <div>
+                        <p class="eyebrow">THE COMMUNITY</p>
+                        <h2>Fresh from the feed<span>.</span></h2>
+                    </div>
+
+                    <span class="feed-count" id="feedCount">0 posts</span>
+
+                </div>
+
+                <div class="feed-filter-row">
+
+                    <button
+                        type="button"
+                        class="feed-filter active"
+                        id="forYouFilter"
+                    >
+                        For you
+                    </button>
+
+                    <button
+                        type="button"
+                        class="feed-filter"
+                        id="followingFilter"
+                    >
+                        Following
+                    </button>
+
+                    <button
+                        type="button"
+                        class="feed-filter"
+                        id="latestFilter"
+                    >
+                        Latest
+                    </button>
+
+                    <a href="discover.html" class="feed-discover-link">
+                        Find your people ↗
+                    </a>
+
+                </div>
+
+                <div class="posts-container" id="postsContainer">
+                    <div class="feed-loading">Preparing your feed...</div>
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- RIGHT SIDEBAR -->
+
+        <aside class="dashboard-rightbar">
+
+            <section class="rightbar-section account-card" id="accountCard">
+
+                <p class="eyebrow">YOUR FOLIO</p>
+
+                <div class="account-card-content">
+
+                    <div class="account-avatar" id="accountAvatar">F</div>
+
+                    <div>
+                        <h3 id="accountName">Welcome, curious mind.</h3>
+                        <p id="accountUsername">Your story starts here.</p>
+                    </div>
+
+                </div>
+
+                <a href="register.html" class="account-profile-link" id="accountActionLink">
+                    Create your account ↗
+                </a>
+
+            </section>
+
+
+            <section class="rightbar-section">
+
+                <div class="rightbar-heading">
+                    <p class="eyebrow">EXPLORE</p>
+                    <a href="discover.html">See all ↗</a>
+                </div>
+
+                <h3 class="rightbar-title">People worth knowing.</h3>
+
+                <p class="rightbar-description">
+                    The best part of a community is discovering
+                    someone whose perspective is different from yours.
+                </p>
+
+                <a href="discover.html" class="rightbar-action">
+                    Discover the community <span>↗</span>
+                </a>
+
+            </section>
+
+
+            <section class="rightbar-section">
+
+                <div class="rightbar-heading">
+                    <p class="eyebrow">YOUR COLLECTION</p>
+                    <a href="saved.html">View all ↗</a>
+                </div>
+
+                <h3 class="rightbar-title">Keep what inspires you.</h3>
+
+                <p class="rightbar-description">
+                    Save interesting posts and return to them whenever you like.
+                </p>
+
+                <a href="saved.html" class="rightbar-action">
+                    Explore saved posts <span>↗</span>
+                </a>
+
+            </section>
+
+
+            <section class="rightbar-section folio-note">
+
+                <p class="eyebrow">A LITTLE REMINDER</p>
+
+                <h3>
+                    Make room for<br>
+                    <em>new ideas.</em>
+                </h3>
+
+                <p>
+                    Read something unexpected.
+                    Share something meaningful.
+                    Start a conversation.
+                </p>
+
+                <span class="folio-note-mark">✳</span>
+
+            </section>
+
+
+            <section class="rightbar-footer">
+
+                <a href="/">About Folio</a>
+                <span>·</span>
+                <a href="discover.html">Community</a>
+
+                <p>© 2026 Folio. Made for connection.</p>
+
+            </section>
+
+        </aside>
+
+    </main>
+
+
+    <script src="js/app.js"></script>
+
+</body>
+</html>

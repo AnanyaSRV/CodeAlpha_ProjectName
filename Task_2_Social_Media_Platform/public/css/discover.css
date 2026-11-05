@@ -1,0 +1,234 @@
+
+/* =========================================
+   FOLIO DISCOVER PAGE
+   ========================================= */
+
+.discover-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 7%;
+}
+
+.discover-hero {
+    min-height: 340px;
+    padding: 75px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.discover-hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(48px, 6vw, 75px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -2px;
+}
+
+.discover-hero h1 em {
+    color: var(--accent);
+}
+
+.discover-hero > p:last-child {
+    max-width: 430px;
+    margin-top: 20px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.discover-content {
+    padding: 65px 0 100px;
+}
+
+.discover-heading {
+    margin-bottom: 28px;
+}
+
+.discover-heading h2 {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 500;
+}
+
+.discover-heading h2 span {
+    color: var(--accent);
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-form input {
+    min-width: 0;
+    flex: 1;
+    min-height: 49px;
+    padding: 0 16px;
+    border: 1px solid var(--border);
+    outline: none;
+    background: white;
+    font-family: var(--sans);
+    font-size: 12px;
+}
+
+.search-form input:focus {
+    border-color: var(--accent);
+}
+
+.search-form button {
+    padding: 0 24px;
+    border: none;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.search-form button:hover {
+    background: var(--accent-dark);
+}
+
+.search-message {
+    margin: 15px 0 25px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.person-card {
+    min-width: 0;
+    padding: 25px;
+    background: white;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.person-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 36, 31, 0.06);
+}
+
+.person-card-top {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.person-card-avatar {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #eee8df;
+    color: var(--accent);
+    font-family: var(--serif);
+    font-size: 21px;
+}
+
+.person-card h3 {
+    overflow-wrap: anywhere;
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.person-card-username {
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.person-card-bio {
+    min-height: 45px;
+    margin-top: 18px;
+    color: #77736b;
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+.person-card-stats {
+    margin-top: 17px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.person-card-actions {
+    margin-top: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.person-profile-button,
+.person-follow-button {
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text);
+    font-size: 10px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.person-profile-button:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.person-follow-button {
+    border-color: var(--accent);
+    background: var(--accent);
+    color: white;
+}
+
+.person-follow-button.following {
+    border-color: var(--border);
+    background: transparent;
+    color: var(--text);
+}
+
+.person-follow-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+@media (max-width: 850px) {
+    .people-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .discover-page {
+        padding: 0 5%;
+    }
+
+    .discover-hero {
+        min-height: 280px;
+        padding: 55px 0;
+    }
+
+    .discover-hero h1 {
+        font-size: 48px;
+    }
+
+    .discover-content {
+        padding: 45px 0 65px;
+    }
+
+    .people-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .search-form button {
+        padding: 0 15px;
+    }
+}

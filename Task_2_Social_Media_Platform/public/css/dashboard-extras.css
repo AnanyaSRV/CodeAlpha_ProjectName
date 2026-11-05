@@ -1,0 +1,120 @@
+
+/* Dashboard interaction details */
+
+.dashboard-nav-link[hidden],
+.dashboard-composer [hidden],
+#sidebarLogoutButton[hidden] {
+    display: none !important;
+}
+
+.post-author-link {
+    color: var(--dashboard-ink);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.post-author-link:hover {
+    color: var(--dashboard-accent);
+}
+
+.comment-profile-link {
+    color: var(--dashboard-ink);
+    font-size: 10px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.comment-profile-link:hover {
+    color: var(--dashboard-accent);
+}
+
+.account-profile-link:hover {
+    text-decoration: underline;
+}
+
+.dashboard-nav-link:focus-visible,
+.topbar-create:focus-visible,
+.account-profile-link:focus-visible,
+.feed-filter:focus-visible {
+    outline: 2px solid var(--dashboard-accent);
+    outline-offset: 3px;
+}
+
+.feed-filter {
+    user-select: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-page *,
+    .dashboard-page *::before,
+    .dashboard-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* -----------------------------------------
+   SOCIAL FEATURES
+----------------------------------------- */
+
+.notification-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    margin-left: auto;
+    border-radius: 20px;
+    background: #b75c42;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.notification-badge[hidden] {
+    display: none;
+}
+
+.feed-filter {
+    border: none;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+}
+
+.feed-filter.active {
+    color: #b75c42;
+    font-weight: 700;
+}
+
+.bookmark-button.bookmarked {
+    color: #b75c42;
+    font-weight: 700;
+}
+
+.post-action-button:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.feed-empty .feed-discover-link {
+    display: inline-block;
+    margin-top: 12px;
+    text-decoration: none;
+    color: #b75c42;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .feed-filter-row {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .notification-badge {
+        margin-left: 8px;
+    }
+}

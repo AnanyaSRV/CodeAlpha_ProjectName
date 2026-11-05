@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Stay updated with your Folio community activity.">
+
+    <title>Notifications — Folio</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/notifications.css">
+</head>
+
+<body class="notifications-page">
+
+    <header class="notifications-topbar">
+        <a href="/" class="logo">folio<span>.</span></a>
+
+        <nav class="notifications-topbar-nav">
+            <a href="/">Home</a>
+            <a href="discover.html">Discover</a>
+            <a href="saved.html">Saved posts</a>
+        </nav>
+    </header>
+
+    <main class="notifications-main">
+
+        <section class="notifications-intro">
+
+            <a href="/" class="notifications-back-link">
+                ← Back to your feed
+            </a>
+
+            <p class="eyebrow">STAY IN THE LOOP</p>
+
+            <h1>Your <em>notifications.</em></h1>
+
+            <p>
+                Conversations, new connections and little moments
+                happening around your stories.
+            </p>
+
+            <div class="notification-summary">
+                <span id="notificationTotal">0 notifications</span>
+                <span id="unreadSummary">0 unread</span>
+            </div>
+
+        </section>
+
+
+        <section class="notifications-content">
+
+            <div class="notifications-heading">
+
+                <div>
+                    <p class="eyebrow">YOUR ACTIVITY</p>
+                    <h2>What's happening<span>.</span></h2>
+                </div>
+
+                <button
+                    type="button"
+                    id="markAllReadButton"
+                    class="mark-all-read-button"
+                    disabled
+                >
+                    Mark all as read
+                </button>
+
+            </div>
+
+
+            <div class="notification-filters">
+
+                <button
+                    type="button"
+                    class="notification-filter active"
+                    data-filter="all"
+                >
+                    All activity
+                </button>
+
+                <button
+                    type="button"
+                    class="notification-filter"
+                    data-filter="unread"
+                >
+                    Unread
+                </button>
+
+            </div>
+
+
+            <div
+                id="notificationsContainer"
+                class="notifications-list"
+                aria-live="polite"
+            >
+                <p class="notifications-loading">
+                    Loading your notifications...
+                </p>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="notifications-footer">
+        <a href="/">folio.</a>
+        <p>© 2026 Folio. Made for connection.</p>
+    </footer>
+
+    <script src="js/notifications.js"></script>
+
+</body>
+</html>

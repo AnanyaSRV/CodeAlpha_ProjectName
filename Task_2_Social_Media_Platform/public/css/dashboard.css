@@ -329,13 +329,20 @@
     border-top: 1px solid var(--dashboard-line);
 }
 
+
 .dashboard-composer .publish-button {
     padding: 12px 17px;
-    background: var(--dashboard-ink);
+    background-color: var(--dashboard-accent);
+    color: #ffffff;
+    border: 1px solid var(--dashboard-accent);
+    cursor: pointer;
+    transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .dashboard-composer .publish-button:hover {
-    background: var(--dashboard-accent);
+    background-color: var(--dashboard-ink);
+    border-color: var(--dashboard-ink);
+    color: #ffffff;
 }
 
 

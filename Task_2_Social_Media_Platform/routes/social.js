@@ -1,101 +1,8 @@
 
 const express = require("express");
-const db = require("../database/database");
+const { pool } = require("../database/database");
 
 const router = express.Router();
-
-/*
-|--------------------------------------------------------------------------
-| SOCIAL FEATURES DATABASE SETUP
-|--------------------------------------------------------------------------
-*/
-
-db.exec(`
-    CREATE TABLE IF NOT EXISTS bookmarks (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        user_id INTEGER NOT NULL,
-        post_id INTEGER NOT NULL,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(user_id, post_id),
-        FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE
-    );
-
-    CREATE TABLE IF NOT EXISTS notifications (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        recipient_id INTEGER NOT NULL,
-        actor_id INTEGER NOT NULL,
-        type TEXT NOT NULL CHECK(type IN ('like', 'comment', 'follow')),
-        post_id INTEGER,
-        comment_id INTEGER,
-        is_read INTEGER NOT NULL DEFAULT 0,
-        created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (recipient_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (actor_id) REFERENCES users(id) ON DELETE CASCADE,
-        FOREIGN KEY (post_id) REFERENCES posts(id) ON DELETE CASCADE,
-        FOREIGN KEY (comment_id) REFERENCES comments(id) ON DELETE CASCADE
-    );
-
-    CREATE INDEX IF NOT EXISTS idx_bookmarks_user
-    ON bookmarks(user_id, created_at DESC);
-
-    CREATE INDEX IF NOT EXISTS idx_notifications_recipient
-    ON notifications(recipient_id, is_read, created_at DESC);
-
-    CREATE TRIGGER IF NOT EXISTS notify_post_like
-    AFTER INSERT ON likes
-    BEGIN
-        INSERT INTO notifications (
-            recipient_id, actor_id, type, post_id
-        )
-        SELECT
-            posts.user_id,
-            NEW.user_id,
-            'like',
-            NEW.post_id
-        FROM posts
-        WHERE posts.id = NEW.post_id
-          AND posts.user_id != NEW.user_id;
-    END;
-
-    CREATE TRIGGER IF NOT EXISTS notify_post_comment
-    AFTER INSERT ON comments
-    BEGIN
-        INSERT INTO notifications (
-            recipient_id, actor_id, type, post_id, comment_id
-        )
-        SELECT
-            posts.user_id,
-            NEW.user_id,
-            'comment',
-            NEW.post_id,
-            NEW.id
-        FROM posts
-        WHERE posts.id = NEW.post_id
-          AND posts.user_id != NEW.user_id;
-    END;
-
-    CREATE TRIGGER IF NOT EXISTS notify_new_follow
-    AFTER INSERT ON follows
-    BEGIN
-        INSERT INTO notifications (
-            recipient_id, actor_id, type
-        )
-        SELECT
-            NEW.following_id,
-            NEW.follower_id,
-            'follow'
-        WHERE NEW.following_id != NEW.follower_id;
-    END;
-`);
-
-
-/*
-|--------------------------------------------------------------------------
-| AUTHENTICATION MIDDLEWARE
-|--------------------------------------------------------------------------
-| auth.js stores the session as req.session.userId.
-*/
 
 function requireLogin(req, res, next) {
     if (!req.session || !req.session.userId) {
@@ -108,119 +15,114 @@ function requireLogin(req, res, next) {
     next();
 }
 
+const feedSelect = `
+    SELECT
+        p.id,
+        p.user_id,
+        p.content,
+        p.image_url,
+        p.created_at,
+        u.username,
+        u.full_name,
+        u.profile_image,
 
-/*
-|--------------------------------------------------------------------------
-| FEED
-|--------------------------------------------------------------------------
-| GET /api/social/feed
-| GET /api/social/feed?feed=following
-| GET /api/social/feed?feed=latest
-|--------------------------------------------------------------------------
-*/
+        (SELECT COUNT(*)
+         FROM likes l
+         WHERE l.post_id = p.id) AS like_count,
 
-router.get("/feed", (req, res) => {
+        (SELECT COUNT(*)
+         FROM comments c
+         WHERE c.post_id = p.id) AS comment_count,
+
+        CASE
+            WHEN EXISTS (
+                SELECT 1
+                FROM likes l
+                WHERE l.post_id = p.id
+                AND l.user_id = $1
+            )
+            THEN 1 ELSE 0
+        END AS liked_by_me,
+
+        CASE
+            WHEN EXISTS (
+                SELECT 1
+                FROM bookmarks b
+                WHERE b.post_id = p.id
+                AND b.user_id = $1
+            )
+            THEN 1 ELSE 0
+        END AS bookmarked_by_me
+
+    FROM posts p
+    JOIN users u ON u.id = p.user_id
+`;
+
+
+// Get the selected feed.
+router.get("/feed", async (req, res) => {
     try {
         const feedType = req.query.feed || "forYou";
-        const userId = req.session?.userId || null;
+        const currentUserId = req.session?.userId
+            ? Number(req.session.userId)
+            : null;
 
-        const baseQuery = `
-            SELECT
-                posts.id,
-                posts.user_id,
-                posts.content,
-                posts.image_url,
-                posts.created_at,
-                users.username,
-                users.full_name,
-                users.profile_image,
-
-                (SELECT COUNT(*)
-                 FROM likes
-                 WHERE likes.post_id = posts.id) AS like_count,
-
-                (SELECT COUNT(*)
-                 FROM comments
-                 WHERE comments.post_id = posts.id) AS comment_count,
-
-                CASE
-                    WHEN ? IS NULL THEN 0
-                    WHEN EXISTS (
-                        SELECT 1
-                        FROM likes
-                        WHERE likes.post_id = posts.id
-                        AND likes.user_id = ?
-                    ) THEN 1
-                    ELSE 0
-                END AS liked_by_me,
-
-                CASE
-                    WHEN ? IS NULL THEN 0
-                    WHEN EXISTS (
-                        SELECT 1
-                        FROM bookmarks
-                        WHERE bookmarks.post_id = posts.id
-                        AND bookmarks.user_id = ?
-                    ) THEN 1
-                    ELSE 0
-                END AS bookmarked_by_me
-
-            FROM posts
-            JOIN users ON users.id = posts.user_id
-        `;
-
-        let posts;
-
-        if (feedType === "following") {
-            if (!userId) {
-                return res.status(401).json({
-                    success: false,
-                    message: "Log in to see posts from people you follow."
-                });
-            }
-
-            posts = db.prepare(`
-                ${baseQuery}
-                JOIN follows ON follows.following_id = posts.user_id
-                WHERE follows.follower_id = ?
-                ORDER BY posts.created_at DESC
-            `).all(userId, userId, userId, userId, userId);
-
-        } else {
-            posts = db.prepare(`
-                ${baseQuery}
-                ORDER BY posts.created_at DESC
-            `).all(userId, userId, userId, userId);
+        if (!["forYou", "following", "latest"].includes(feedType)) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid feed type."
+            });
         }
 
-        return res.json({
+        if (feedType === "following" && !currentUserId) {
+            return res.status(401).json({
+                success: false,
+                message: "Please log in to view your following feed."
+            });
+        }
+
+        let query = `${feedSelect}`;
+
+        if (feedType === "following") {
+            query += `
+                JOIN follows f
+                    ON f.following_id = p.user_id
+                    AND f.follower_id = $1
+            `;
+        }
+
+        query += `
+            ORDER BY p.created_at DESC, p.id DESC
+            LIMIT 50
+        `;
+
+        const result = await pool.query(
+            query,
+            [currentUserId]
+        );
+
+        res.json({
             success: true,
             feed: feedType,
-            posts
+            posts: result.rows
         });
 
     } catch (error) {
-        console.error("Social feed error:", error);
+        console.error("Feed error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not load the feed."
+            message: "Unable to load feed."
         });
     }
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| BOOKMARKS
-|--------------------------------------------------------------------------
-*/
-
 // Save a post.
-router.post("/bookmarks/:postId", requireLogin, (req, res) => {
+router.post("/bookmarks/:postId", requireLogin, async (req, res) => {
     try {
         const postId = Number(req.params.postId);
-        const userId = req.session.userId;
+        const userId = Number(req.session.userId);
 
         if (!Number.isInteger(postId) || postId <= 0) {
             return res.status(400).json({
@@ -229,239 +131,236 @@ router.post("/bookmarks/:postId", requireLogin, (req, res) => {
             });
         }
 
-        const post = db.prepare(
-            "SELECT id FROM posts WHERE id = ?"
-        ).get(postId);
+        const postResult = await pool.query(
+            "SELECT id FROM posts WHERE id = $1",
+            [postId]
+        );
 
-        if (!post) {
+        if (postResult.rows.length === 0) {
             return res.status(404).json({
                 success: false,
                 message: "Post not found."
             });
         }
 
-        db.prepare(`
-            INSERT OR IGNORE INTO bookmarks (user_id, post_id)
-            VALUES (?, ?)
-        `).run(userId, postId);
+        await pool.query(
+            `INSERT INTO bookmarks (user_id, post_id)
+             VALUES ($1, $2)
+             ON CONFLICT (user_id, post_id) DO NOTHING`,
+            [userId, postId]
+        );
 
-        return res.json({
+        res.json({
             success: true,
             bookmarked: true,
-            message: "Post saved to your bookmarks."
+            message: "Post saved successfully."
         });
 
     } catch (error) {
-        console.error("Bookmark save error:", error);
+        console.error("Bookmark error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not save this post."
+            message: "Unable to save post."
         });
     }
 });
 
 
 // Remove a saved post.
-router.delete("/bookmarks/:postId", requireLogin, (req, res) => {
+router.delete("/bookmarks/:postId", requireLogin, async (req, res) => {
     try {
         const postId = Number(req.params.postId);
-        const userId = req.session.userId;
 
-        db.prepare(`
-            DELETE FROM bookmarks
-            WHERE user_id = ? AND post_id = ?
-        `).run(userId, postId);
+        if (!Number.isInteger(postId) || postId <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid post ID."
+            });
+        }
 
-        return res.json({
+        await pool.query(
+            `DELETE FROM bookmarks
+             WHERE user_id = $1 AND post_id = $2`,
+            [
+                req.session.userId,
+                postId
+            ]
+        );
+
+        res.json({
             success: true,
             bookmarked: false,
-            message: "Post removed from your saved posts."
+            message: "Post removed from saved posts."
         });
 
     } catch (error) {
-        console.error("Bookmark removal error:", error);
+        console.error("Remove bookmark error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not remove this bookmark."
+            message: "Unable to remove saved post."
         });
     }
 });
 
 
-// Get the logged-in user's saved posts.
-router.get("/bookmarks", requireLogin, (req, res) => {
+// Get saved posts.
+router.get("/bookmarks", requireLogin, async (req, res) => {
     try {
-        const userId = req.session.userId;
+        const userId = Number(req.session.userId);
 
-        const posts = db.prepare(`
-            SELECT
-                posts.id,
-                posts.user_id,
-                posts.content,
-                posts.image_url,
-                posts.created_at,
-                users.username,
-                users.full_name,
-                users.profile_image,
+        const result = await pool.query(
+            `${feedSelect}
+             JOIN bookmarks b
+                ON b.post_id = p.id
+                AND b.user_id = $1
+             ORDER BY b.created_at DESC, b.id DESC`,
+            [userId]
+        );
 
-                (SELECT COUNT(*)
-                 FROM likes
-                 WHERE likes.post_id = posts.id) AS like_count,
-
-                (SELECT COUNT(*)
-                 FROM comments
-                 WHERE comments.post_id = posts.id) AS comment_count,
-
-                CASE
-                    WHEN EXISTS (
-                        SELECT 1
-                        FROM likes
-                        WHERE likes.post_id = posts.id
-                        AND likes.user_id = ?
-                    ) THEN 1
-                    ELSE 0
-                END AS liked_by_me,
-
-                1 AS bookmarked_by_me
-
-            FROM bookmarks
-            JOIN posts ON posts.id = bookmarks.post_id
-            JOIN users ON users.id = posts.user_id
-            WHERE bookmarks.user_id = ?
-            ORDER BY bookmarks.created_at DESC
-        `).all(userId, userId);
-
-        return res.json({
+        res.json({
             success: true,
-            posts
+            posts: result.rows
         });
 
     } catch (error) {
-        console.error("Bookmarks fetch error:", error);
+        console.error("Get bookmarks error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not load saved posts."
+            message: "Unable to load saved posts."
         });
     }
 });
 
 
-/*
-|--------------------------------------------------------------------------
-| NOTIFICATIONS
-|--------------------------------------------------------------------------
-*/
-
-// Fetch notifications.
-router.get("/notifications", requireLogin, (req, res) => {
+// Get notifications for the logged-in user.
+router.get("/notifications", requireLogin, async (req, res) => {
     try {
-        const userId = req.session.userId;
+        const userId = Number(req.session.userId);
 
-        const notifications = db.prepare(`
-            SELECT
-                notifications.id,
-                notifications.type,
-                notifications.post_id,
-                notifications.comment_id,
-                notifications.is_read,
-                notifications.created_at,
-                users.id AS actor_id,
-                users.username AS actor_username,
-                users.full_name AS actor_name,
-                users.profile_image AS actor_image,
-                posts.content AS post_content
+        const result = await pool.query(
+            `SELECT
+                n.id,
+                n.type,
+                n.post_id,
+                n.comment_id,
+                n.is_read,
+                n.created_at,
+                n.actor_id,
+                u.username AS actor_username,
+                u.full_name AS actor_name,
+                u.profile_image AS actor_image,
+                p.content AS post_content
 
-            FROM notifications
-            JOIN users ON users.id = notifications.actor_id
-            LEFT JOIN posts ON posts.id = notifications.post_id
-            WHERE notifications.recipient_id = ?
-            ORDER BY notifications.created_at DESC
-            LIMIT 100
-        `).all(userId);
+             FROM notifications n
 
-        const unreadCount = db.prepare(`
-            SELECT COUNT(*) AS count
-            FROM notifications
-            WHERE recipient_id = ? AND is_read = 0
-        `).get(userId).count;
+             JOIN users u
+                ON u.id = n.actor_id
 
-        return res.json({
+             LEFT JOIN posts p
+                ON p.id = n.post_id
+
+             WHERE n.recipient_id = $1
+
+             ORDER BY n.created_at DESC, n.id DESC
+             LIMIT 100`,
+            [userId]
+        );
+
+        const unreadResult = await pool.query(
+            `SELECT COUNT(*) AS count
+             FROM notifications
+             WHERE recipient_id = $1
+             AND is_read = FALSE`,
+            [userId]
+        );
+
+        res.json({
             success: true,
-            notifications,
-            unreadCount
+            notifications: result.rows,
+            unreadCount: Number(unreadResult.rows[0].count)
         });
 
     } catch (error) {
-        console.error("Notifications fetch error:", error);
+        console.error("Notifications error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not load notifications."
+            message: "Unable to load notifications."
         });
     }
 });
 
 
 // Mark one notification as read.
-router.patch("/notifications/:id/read", requireLogin, (req, res) => {
+router.patch("/notifications/:id/read", requireLogin, async (req, res) => {
     try {
         const notificationId = Number(req.params.id);
-        const userId = req.session.userId;
 
-        const result = db.prepare(`
-            UPDATE notifications
-            SET is_read = 1
-            WHERE id = ? AND recipient_id = ?
-        `).run(notificationId, userId);
+        if (!Number.isInteger(notificationId) || notificationId <= 0) {
+            return res.status(400).json({
+                success: false,
+                message: "Invalid notification ID."
+            });
+        }
 
-        if (result.changes === 0) {
+        const result = await pool.query(
+            `UPDATE notifications
+             SET is_read = TRUE
+             WHERE id = $1 AND recipient_id = $2
+             RETURNING id`,
+            [
+                notificationId,
+                req.session.userId
+            ]
+        );
+
+        if (result.rowCount === 0) {
             return res.status(404).json({
                 success: false,
                 message: "Notification not found."
             });
         }
 
-        return res.json({
+        res.json({
             success: true,
             message: "Notification marked as read."
         });
 
     } catch (error) {
-        console.error("Notification update error:", error);
+        console.error("Mark notification read error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not update notification."
+            message: "Unable to update notification."
         });
     }
 });
 
 
 // Mark all notifications as read.
-router.patch("/notifications/read-all", requireLogin, (req, res) => {
+router.patch("/notifications/read-all", requireLogin, async (req, res) => {
     try {
-        const userId = req.session.userId;
+        await pool.query(
+            `UPDATE notifications
+             SET is_read = TRUE
+             WHERE recipient_id = $1 AND is_read = FALSE`,
+            [req.session.userId]
+        );
 
-        db.prepare(`
-            UPDATE notifications
-            SET is_read = 1
-            WHERE recipient_id = ? AND is_read = 0
-        `).run(userId);
-
-        return res.json({
+        res.json({
             success: true,
             message: "All notifications marked as read."
         });
 
     } catch (error) {
-        console.error("Mark all notifications error:", error);
+        console.error("Mark all notifications read error:", error);
 
-        return res.status(500).json({
+        res.status(500).json({
             success: false,
-            message: "Could not update notifications."
+            message: "Unable to update notifications."
         });
     }
 });

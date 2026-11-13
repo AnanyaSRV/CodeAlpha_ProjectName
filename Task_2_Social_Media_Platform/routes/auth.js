@@ -1,12 +1,12 @@
 
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const db = require("../database/database");
+const { pool } = require("../database/database");
 
 const router = express.Router();
 
 // Register a new user.
-router.post("/register", (req, res) => {
+router.post("/register", async (req, res) => {
     try {
         const {
             username,
@@ -15,7 +15,6 @@ router.post("/register", (req, res) => {
             fullName
         } = req.body;
 
-        // Validate required fields.
         if (!username || !email || !password || !fullName) {
             return res.status(400).json({
                 success: false,
@@ -27,7 +26,6 @@ router.post("/register", (req, res) => {
         const cleanEmail = email.trim().toLowerCase();
         const cleanFullName = fullName.trim();
 
-        // Validate username.
         if (!/^[a-z0-9_]{3,20}$/.test(cleanUsername)) {
             return res.status(400).json({
                 success: false,
@@ -35,7 +33,6 @@ router.post("/register", (req, res) => {
             });
         }
 
-        // Validate email.
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)) {
             return res.status(400).json({
                 success: false,
@@ -43,7 +40,6 @@ router.post("/register", (req, res) => {
             });
         }
 
-        // Validate password.
         if (password.length < 8) {
             return res.status(400).json({
                 success: false,
@@ -58,47 +54,45 @@ router.post("/register", (req, res) => {
             });
         }
 
-        // Check whether username or email already exists.
-        const existingUser = db.prepare(`
-            SELECT id
-            FROM users
-            WHERE username = ? OR email = ?
-        `).get(cleanUsername, cleanEmail);
+        const existingUser = await pool.query(
+            `SELECT id FROM users
+             WHERE username = $1 OR email = $2`,
+            [cleanUsername, cleanEmail]
+        );
 
-        if (existingUser) {
+        if (existingUser.rows.length > 0) {
             return res.status(409).json({
                 success: false,
                 message: "Username or email is already registered."
             });
         }
 
-        // Hash the password.
         const hashedPassword = bcrypt.hashSync(password, 12);
 
-        // Save the new user.
-        const result = db.prepare(`
-            INSERT INTO users (
+        const result = await pool.query(
+            `INSERT INTO users (
                 username,
                 email,
                 password,
                 full_name
             )
-            VALUES (?, ?, ?, ?)
-        `).run(
-            cleanUsername,
-            cleanEmail,
-            hashedPassword,
-            cleanFullName
+            VALUES ($1, $2, $3, $4)
+            RETURNING id, username, email, full_name`,
+            [
+                cleanUsername,
+                cleanEmail,
+                hashedPassword,
+                cleanFullName
+            ]
         );
 
         const user = {
-            id: result.lastInsertRowid,
-            username: cleanUsername,
-            email: cleanEmail,
-            fullName: cleanFullName
+            id: result.rows[0].id,
+            username: result.rows[0].username,
+            email: result.rows[0].email,
+            fullName: result.rows[0].full_name
         };
 
-        // Start a logged-in session.
         req.session.regenerate((error) => {
             if (error) {
                 console.error("Session error:", error);
@@ -132,6 +126,13 @@ router.post("/register", (req, res) => {
     } catch (error) {
         console.error("Registration error:", error);
 
+        if (error.code === "23505") {
+            return res.status(409).json({
+                success: false,
+                message: "Username or email is already registered."
+            });
+        }
+
         res.status(500).json({
             success: false,
             message: "Unable to create your account."
@@ -141,7 +142,7 @@ router.post("/register", (req, res) => {
 
 
 // Log in an existing user.
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     try {
         const { identifier, password } = req.body;
 
@@ -154,11 +155,14 @@ router.post("/login", (req, res) => {
 
         const cleanIdentifier = identifier.trim().toLowerCase();
 
-        const user = db.prepare(`
-            SELECT id, username, email, password, full_name
-            FROM users
-            WHERE username = ? OR email = ?
-        `).get(cleanIdentifier, cleanIdentifier);
+        const result = await pool.query(
+            `SELECT id, username, email, password, full_name
+             FROM users
+             WHERE username = $1 OR email = $1`,
+            [cleanIdentifier]
+        );
+
+        const user = result.rows[0];
 
         if (!user || !bcrypt.compareSync(password, user.password)) {
             return res.status(401).json({
@@ -214,7 +218,7 @@ router.post("/login", (req, res) => {
 
 
 // Get the currently logged-in user.
-router.get("/me", (req, res) => {
+router.get("/me", async (req, res) => {
     try {
         if (!req.session.userId) {
             return res.status(401).json({
@@ -223,8 +227,8 @@ router.get("/me", (req, res) => {
             });
         }
 
-        const user = db.prepare(`
-            SELECT
+        const result = await pool.query(
+            `SELECT
                 id,
                 username,
                 email,
@@ -232,9 +236,12 @@ router.get("/me", (req, res) => {
                 bio,
                 profile_image,
                 created_at
-            FROM users
-            WHERE id = ?
-        `).get(req.session.userId);
+             FROM users
+             WHERE id = $1`,
+            [req.session.userId]
+        );
+
+        const user = result.rows[0];
 
         if (!user) {
             return res.status(404).json({
